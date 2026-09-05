@@ -1,4 +1,5 @@
 import Quickshell
+import Quickshell.Wayland
 import QtQuick
 import QtQuick.Layouts
 import qs.modules.left as Left
@@ -9,7 +10,10 @@ PanelWindow {
     id: bar
     anchors { top: true; left: true; right: true }
     implicitHeight: Theme.barHeight
-    color: Theme.background
+    color: Theme.glassBackground
+
+    // This makes the whole bar glassy
+    // BackgroundEffect.blurRegion: Region { item: bar.contentItem }
 
     // left region
     RowLayout {
@@ -33,5 +37,12 @@ PanelWindow {
         anchors { right: parent.right; verticalCenter: parent.verticalCenter; rightMargin: Theme.padding }
         spacing: Theme.spacing
         Right.PowerButton {}
+    }
+
+    // glass rim around the bar
+    Rectangle{
+       anchors{ left: parent.left; right: parent.right; bottom: parent.bottom }
+       height: 2
+       color: Theme.glassBorder
     }
 }

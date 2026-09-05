@@ -6,6 +6,8 @@ import qs
 import qs.services as Services
 import qs.modules as Modules
 
+import Quickshell.Wayland
+
 PopupWindow {
     id: popup
     // Fixed at the largest possible size (header + divider + up to 6 network rows).
@@ -15,6 +17,11 @@ PopupWindow {
     visible: false
     grabFocus: true
     color: "transparent"
+
+    BackgroundEffect.blurRegion: Region {
+        item: background
+        radius: Theme.popupRadius
+    }
 
     readonly property var sortedNetworks: {
         const nets = Services.NetworkService.wifiEnabled ? Services.NetworkService.availableNetworks : [];
@@ -27,11 +34,20 @@ PopupWindow {
         anchors.left: parent.left
         implicitWidth: Theme.popupWidth
         implicitHeight: contentColumn.implicitHeight + Theme.padding * 2
-        color: Theme.background
         radius: Theme.popupRadius
-        border.color: Theme.border
+        color: Theme.glassBackground
+        border.color: Theme.glassBorder
         border.width: 1
 
+        Rectangle {
+            anchors.fill: parent
+            radius: parent.radius
+            gradient: Gradient {
+                GradientStop { position: 0.0; color: Theme.glassHighlight }
+                GradientStop { position: 0.35; color: "transparent" }
+            }
+        }
+        
         Behavior on implicitHeight {
             NumberAnimation { duration: Theme.animationNormal; easing.type: Easing.OutQuad }
         }

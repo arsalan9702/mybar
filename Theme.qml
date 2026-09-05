@@ -32,6 +32,11 @@ QtObject {
     readonly property int popupRadius: 10
     readonly property int popupMargin: 8
 
+    // Blur thingies
+    readonly property color glassBackground: Qt.rgba(background.r, background.g, background.b, 0.45)
+    readonly property color glassBorder: Qt.rgba(1, 1, 1, 0.06)
+    readonly property color glassHighlight: Qt.rgba(1, 1, 1, 0.08)
+
 
     readonly property color border: "#45475a"
     readonly property color sliderTrack: "#45475a"

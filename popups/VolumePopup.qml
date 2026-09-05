@@ -7,6 +7,8 @@ import qs.services as Services
 import qs.popups
 import qs.modules as Modules
 
+import Quickshell.Wayland
+
 PopupWindow {
     id: popup
     implicitWidth: background.implicitWidth
@@ -15,14 +17,28 @@ PopupWindow {
     grabFocus: true
     color: "transparent"
 
+    BackgroundEffect.blurRegion: Region {
+        item: background
+        radius: Theme.popupRadius
+    }
+
     Rectangle {
         id: background
         implicitWidth: Theme.popupWidth
         implicitHeight: contentColumn.implicitHeight + Theme.padding * 2
-        color: Theme.background
+        color: Theme.glassBackground
+        border.color: Theme.glassBorder
         radius: Theme.popupRadius
-        border.color: Theme.border
         border.width: 1
+
+        Rectangle {
+            anchors.fill: parent
+            radius: parent.radius
+            gradient: Gradient {
+                GradientStop { position: 0.0; color: Theme.glassHighlight }
+                GradientStop { position: 0.35; color: "transparent" }
+            }
+        }
 
         ColumnLayout {
             id: contentColumn
