@@ -1,0 +1,7 @@
+DeviceRow 1.0 DeviceRow.qml
+VolumePopup 1.0 VolumePopup.qml
+StyledSlider 1.0 StyledSlider.qml
+WifiPopup 1.0 WifiPopup.qml
+BluetoothPopup 1.0 BluetoothPopup.qml
+BatteryPopup 1.0 BatteryPopup.qml
+CalendarPopup 1.0 CalendarPopup.qml

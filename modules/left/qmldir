@@ -1,0 +1,4 @@
+VolumeButton 1.0 VolumeButton.qml
+BluetoothButton 1.0 BluetoothButton.qml
+WifiButton 1.0 WifiButton.qml
+BatteryButton 1.0 BatteryButton.qml
